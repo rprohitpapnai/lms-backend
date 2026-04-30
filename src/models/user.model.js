@@ -1,6 +1,9 @@
 import mongoose, {Schema } from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const userSchema = new Schema({
     name:{
@@ -44,6 +47,18 @@ organizationId:{
     
   },
 },{ timestamps:true})
+
+userSchema.pre("save", async function (next){
+    if (!this.isModified("password")){
+        return next()
+    }
+    this.password = bcrypt.hashSync(this.password, 10)
+    next()
+})
+userSchema.methods.isPasswordValid= async  function
+(password){
+    return await bcrypt.compare(password, this.password)
+}
 
 
 export const User = mongoose.model("User", userSchema)

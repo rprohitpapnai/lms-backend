@@ -1,5 +1,5 @@
 import mongoose, {Schema } from "mongoose";
-const enrollmentSchema = new Schema ({\
+const enrollmentSchema = new Schema ({
     studentId:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",

@@ -57,7 +57,7 @@ userSchema.methods.isPasswordValid= async  function
 (password){
     return await bcrypt.compare(password, this.password)
 }
-userSchema.methods.genrateAccessToken = fucntion (){
+userSchema.methods.genrateAccessToken = function (){
     return jwt.sign ({
         id:this.id,
         role:this.role,
@@ -65,7 +65,7 @@ userSchema.methods.genrateAccessToken = fucntion (){
             expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )}
-userSchema.methods.genrateRefreshToken = fucntion (){
+userSchema.methods.genrateRefreshToken = function (){
     return jwt.sign ({
         id:this.id,
         role:this.role,

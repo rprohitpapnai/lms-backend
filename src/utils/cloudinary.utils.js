@@ -2,11 +2,10 @@ import {v2 as cloudinary} from "cloudinary";
 
 
 
-    // Configuration
     cloudinary.config({ 
         cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
         api_key: process.env.CLOUDINARY_API_KEY, 
-        api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        api_secret: process.env.CLOUDINARY_API_SECRET 
    
 })
 
@@ -22,7 +21,7 @@ const uploadOnCloudinary = async (filePath, folderName) => {
 
   console.log(response)
   console.log("the file is uloaded on ", response.url)
-  fs.unlinkSync(filePath) // remove the file from the temporary storage after successful upload
+  fs.unlinkSync(filePath) 
   return response
 
 }

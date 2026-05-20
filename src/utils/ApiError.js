@@ -17,4 +17,4 @@ constructor (statuscode,message="something went wrong but no message was provide
 }
 }
 
-export default {ApiError} ;
+export { ApiError };
